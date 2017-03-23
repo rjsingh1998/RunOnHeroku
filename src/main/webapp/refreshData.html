@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<h1>get data from server11</h1>
+	<table>
+		<tr>
+			<td>date</td>
+			<td>
+				<div id="date"></div>
+			</td>
+			<td> | </td>
+			<td>msg</td>
+			<td>
+				<div id="msg"></div>
+			</td>
+		</tr>
+	</table>
+
+
+	<script>
+		if (typeof (EventSource) !== "undefined") {
+			var dateEvtSource = new EventSource("/date.jsp");
+			dateEvtSource.onmessage = function(event) {
+				document.getElementById("date").innerHTML += event.data
+						+ "<br />";
+			};
+			
+			var msgEvtSource = new EventSource("/msg.jsp");
+			msgEvtSource.onmessage = function(event) {
+				document.getElementById("msg").innerHTML += event.data
+						+ "<br />";
+			}
+		} else {
+			document.getElementById("result").innerHTML = "sorry，the exporler don't support event server-sent ...";
+		}
+	</script>
+
+</body>
+</html>
