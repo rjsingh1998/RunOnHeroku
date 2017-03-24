@@ -19,13 +19,13 @@
 
 	<script>
 		if (typeof (EventSource) !== "undefined") {
-			var dateEvtSource = new EventSource("/date.jsp");
+			var dateEvtSource = new EventSource("/html5/info/dateInfo.jsp");
 			dateEvtSource.onmessage = function(event) {
 				document.getElementById("date").innerHTML += event.data
 						+ "<br />";
 			};
 			
-			var msgEvtSource = new EventSource("/msg.jsp");
+			var msgEvtSource = new EventSource("/html5/info/msgInfo.jsp");
 			msgEvtSource.onmessage = function(event) {
 				document.getElementById("msg").innerHTML += event.data
 						+ "<br />";
