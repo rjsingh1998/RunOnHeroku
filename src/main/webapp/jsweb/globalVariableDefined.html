@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+
+	function setGlobalVariable() {
+		test = "test";
+		document.getElementById("result").innerText = "global variable set done";
+	}
+	
+	function showGlobalVariable() {
+		if (typeof(test)=="undefined") {
+			document.getElementById("result").innerText = "global variable not define";
+		} else {
+			document.getElementById("result").innerText = "global variable is: " + test;
+		}
+	}
+</script>
+</head>
+<body>
+	please click the "setGlobalVariable" button at first:<br/>
+	<button onclick="setGlobalVariable()">setGlobalVariable</button>
+	<br/>
+	<button onclick="showGlobalVariable()">showGlobalVariable</button>
+	<br/>
+	
+	<div id="result"></div>
+</body>
+</html>
