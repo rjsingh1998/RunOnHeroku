@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript" src="/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.simplePagination.js"></script>
+	
+	<link type="text/css" rel="stylesheet" href="/css/simplePagination.css"/>
+	<script>
+	$(function() {
+	    $("#light-pagination").pagination({
+	        items: 100,
+	        itemsOnPage: 10,
+	        cssStyle: 'light-theme',
+	        onInit: function() {alert("onInit")},
+	        onPageClick: function(pageNumber, event) {
+	        	alert("onPageClick: " + pageNumber + ", " + event);
+	        	var curPage = $("#light-pagination") .pagination('getCurrentPage');
+	        	alert(curPage);
+	        	$.getJSON(
+	        			"simplePaginationResult.jsp",
+	        			{
+							pageNum : curPage
+						},
+						function(data) {
+							alert(data);
+						});
+	        }
+	    });
+	});
+	</script>
+</head>
+<body>
+	<h2>CSS Themes</h2>
+
+	<p class="spacer">"light-theme"</p>
+
+	<div class="pagination-holder">
+		<div id="light-pagination" class="pagination"></div>
+	</div>
+	
+</body>
+</html>
